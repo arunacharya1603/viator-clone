@@ -74,7 +74,7 @@ const Features = () => {
             </div>
           </div>
         </div>
-        <div className="flex justify-center gap-2 mt-8">
+        <div className="flex justify-center gap-2 mt-8 p-4 lg:p-0 ">
           {features.map((_, index) => (
             <div
               key={index}
@@ -86,7 +86,7 @@ const Features = () => {
           ))}
         </div>
 
-        <div className="flex justify-end mt-8 ">
+        <div className="lg:flex hidden justify-end mt-8 ">
           <div className="text-lg font-medium pl-6 bg-gray-600 opacity-50 inset-0 rounded-sm w-[30%] h-12 text-black flex items-center">
             <a className="text-white opacity-100 inset-0  underline" href="#">
               {features[activeIndex].text}
