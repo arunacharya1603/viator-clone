@@ -62,7 +62,7 @@ function TopDestination() {
           {destinations.map((destination) => (
             <div
               key={destination.title}
-              className="relative rounded-md overflow-hidden flex-shrink-0 w-64 sm:w-80 lg:w-auto"
+              className="relative rounded-md overflow-hidden hover:scale-105 flex-shrink-0 w-64 sm:w-80 lg:w-auto"
             >
               <img
                 src={destination.image}
