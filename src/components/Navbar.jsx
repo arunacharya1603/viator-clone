@@ -7,9 +7,14 @@ import SideBarLeft from './SideBarLeft';
 const Navbar = () => {
   const [showUserMenu, setShowUserMenu] = useState(false);
   const [showSideBar, setShowSideBar] = useState(false);
+  const [showSide,setShowSide] = useState(false);
 
   const handleSideBarLeft = () => {
     setShowSideBar(!showSideBar);
+  }
+
+  const handleSide = () => {
+    setShowSide(!showSide);
   }
 
   const handleUserMenuClick = () => {
@@ -97,11 +102,12 @@ const Navbar = () => {
         </button>
         <div className="hidden lg:block h-8 mx-4 w-px bg-gray-300"></div>
         <div className="flex items-center relative">
-          <button
+          <div
             className="flex items-center p-2 rounded-full border hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-500"
             aria-label="User avatar and options"
-            onClick={handleUserMenuClick}
+            
           >
+            <button onClick={handleSide}>
             <svg
               viewBox="0 0 48 48"
               fill="none"
@@ -115,6 +121,8 @@ const Navbar = () => {
               ></path>
               <circle cx="24" cy="17.357" r="10.5" fill="#ffffff"></circle>
             </svg>
+            </button>
+            <button onClick={handleUserMenuClick} className="lg:block hidden">
             <span className="ml-2">
               <svg
                 width="16"
@@ -130,18 +138,28 @@ const Navbar = () => {
                 ></path>
               </svg>
             </span>
-          </button>
+            </button>
+          </div>
 
           {showUserMenu && (
             <>
               <div className="absolute z-50 right-2 top-full mt-2 lg:block hidden">
                 <UserMenu onClose={() => setShowUserMenu(false)} />
               </div>
-              <div className="absolute z-50 right-2 top-full mt-2 block lg:hidden">
-                <SideBar onClose={() => setShowUserMenu(false)} />
-              </div>
+              
             </>
           )}
+
+          {showSide && (
+            <>
+            <div className="absolute z-50 right-2 top-full mt-2 block lg:hidden">
+                <SideBar isOpen={showSide} toggleSideBar={handleSide} />
+              </div>
+              
+            </>
+          )}
+
+          
         </div>
       </div>
     </div>
